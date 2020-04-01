@@ -28,12 +28,13 @@ path = args.path
 filesize = 'bs=' + str(args.filesize)
 runtime = 60*args.runtime
 
-# TO DO Create files of certain size (big-ish)
-# TO DO range needs to be a variable
+# Create all the files and don't remove any until the end.
+# TO DO set count using a variable or remove it. Need to constrain total disk space used
+# so we can't accidentally fill up a partition. Does this happen with /dev/zero? check it
 
 end = time.time() + runtime
 while time.time() < end:
-    tfn = tempfile.NamedTemporaryFile(dir='.')
+    tfn = tempfile.NamedTemporaryFile(dir='.', delete=False, prefix='zz')
     filename = tfn.name
     dd_filename = 'of=' + filename
     bigfiles = subprocess.run(['/bin/dd', 'if=/dev/zero', dd_filename, 'count=400', filesize])
