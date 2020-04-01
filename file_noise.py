@@ -9,6 +9,7 @@ import subprocess
 import os
 import argparse
 import tempfile
+import time
 
 # Create random string for directory and cd to it.
 # Create argparse options with defaults for path name, file size, and time to run.
@@ -20,20 +21,23 @@ parser = argparse.ArgumentParser(description='Create random files of size repeat
 parser.add_argument('-p', '--path', required=False, default=randomdir, help='Set the path where the random\
  files should exist.')
 parser.add_argument('-s', '--filesize', required=False, default=1024, help='Specify size of each file.')
-parser.add_argument('-t', '--time', required=False, default=10, help='Specify length of time to run.')
+parser.add_argument('-t', '--runtime', required=False, default=1, help='Specify length of time to run in minutes.')
 args = parser.parse_args()
 
 path = args.path
-filesize = args.file
-time = args.time
+filesize = 'bs=' + str(args.filesize)
+runtime = 60*args.runtime
 
 # TO DO Create files of certain size (big-ish)
-# TO DO filename needs to be a string or something that subprocess.run can read in. check conversions
-for i in range(5):
-    tfn = tempfile.NamedTemporaryFile(dir='.')
-    filename = str(tfn.name)
-    bigfiles = subprocess.run(['/bin/dd', 'if=/dev/zero', 'of=', filename, 'count=400', 'bs=', str(filesize)])
+# TO DO range needs to be a variable
 
+end = time.time() + runtime
+while time.time() < end:
+    tfn = tempfile.NamedTemporaryFile(dir='.')
+    filename = tfn.name
+    dd_filename = 'of=' + filename
+    bigfiles = subprocess.run(['/bin/dd', 'if=/dev/zero', dd_filename, 'count=400', filesize])
+    
 # TO DO Then remove files of certain age, or perhaps after they grow to X size. This
 # loop should not surpass a certain max_size.
 
