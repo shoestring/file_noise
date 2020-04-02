@@ -17,12 +17,13 @@ randomdir = td.name
 os.chdir(randomdir)
 
 # Create argparse options with defaults for path name, file size, and time to run.
-parser = argparse.ArgumentParser(description='Create random files of size repeatedly until done.')
+parser = argparse.ArgumentParser(description='Create random files of size repeatedly until done. Redirect stdout\
+        to a file if you don\'t want to see all the garbage.')
 parser.add_argument('-p', '--path', required=False, default=randomdir, help='Set the path where the random\
  files should exist.')
-parser.add_argument('-m', '--maxdirsize', required=False, default=50000000, help='Maximum directory size in bytes.')
-parser.add_argument('-s', '--filesize', required=False, default=4096, help='Specify size of each file.')
-parser.add_argument('-t', '--runtime', required=False, default=1, help='Specify length of time to run in minutes.')
+parser.add_argument('-m', '--maxdirsize', required=False, default=50000000, type=int, help='Maximum directory size in bytes.')
+parser.add_argument('-f', '--filesize', required=False, default=4096, help='Specify size of each file.')
+parser.add_argument('-t', '--runtime', required=False, default=1, type=int, help='Specify length of time to run in minutes.')
 args = parser.parse_args()
 
 path = args.path
@@ -50,5 +51,4 @@ try:
 except:
     print("Something went wrong!")
 
-#print("Finished in " + str(runtime/60) + " minutes.")
-
+print("Finished in " + str(runtime/60) + " minutes.")
