@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 #
-# Generate random files in a temp directory of a certain size.
-# Repeat for a specified time. Probably not gonna work with old
-# pythons (2.x). Probably could be done more elegant. I promise nothing.
+# Generate random files in the temp directory a with specified size limit.
+# Repeat for a specified time. Written and tested with python3.6.
+# Probably not gonna work with old pythons (2.x). Probably could 
+# be done more elegant. I promise nothing.
 #
 # Author:  Mike Cammilleri  
 # Date:    Tue Mar 31 13:25:38 CDT 2020
