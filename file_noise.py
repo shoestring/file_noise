@@ -39,7 +39,7 @@ runtime = 60 * args.runtime
 # Get the current, temporary directory size
 dirsize = sum([os.path.getsize(f) for f in os.listdir('.') if os.path.isfile(f)])
 
-# Run the loop to do the stuff
+# Run the loop and do the stuff
 try:
     end = time.time() + runtime
     while time.time() < end:
