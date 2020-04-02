@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 #
 # Generate random files in a temp directory of a certain size.
-# Repeat for specified time.
+# Repeat for a specified time. Probably not gonna work with old
+# pythons (2.x). I promise nothing.
 #
-# Mike Cammilleri  Tue Mar 31 13:25:38 CDT 202
-#
+# Author:  Mike Cammilleri  
+# Date:    Tue Mar 31 13:25:38 CDT 202
+
 import subprocess
 import os
 import argparse
