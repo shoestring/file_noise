@@ -2,7 +2,7 @@
 #
 # Generate random files in a temp directory of a certain size.
 # Repeat for a specified time. Probably not gonna work with old
-# pythons (2.x). I promise nothing.
+# pythons (2.x). Probably could be done more elegant. I promise nothing.
 #
 # Author:  Mike Cammilleri  
 # Date:    Tue Mar 31 13:25:38 CDT 202
@@ -23,9 +23,11 @@ parser = argparse.ArgumentParser(description='Create random files of size repeat
         to a file if you don\'t want to see all the garbage.')
 parser.add_argument('-p', '--path', required=False, default=randomdir, help='Set the path where the random\
  files should exist.')
-parser.add_argument('-m', '--maxdirsize', required=False, default=50000000, type=int, help='Maximum directory size in bytes.')
+parser.add_argument('-m', '--maxdirsize', required=False, default=50000000, type=int,\
+                    help='Maximum directory size in bytes.')
 parser.add_argument('-f', '--filesize', required=False, default=4096, help='Specify size of each file.')
-parser.add_argument('-t', '--runtime', required=False, default=1, type=int, help='Specify length of time to run in minutes.')
+parser.add_argument('-t', '--runtime', required=False, default=1, type=int,\
+                    help='Specify length of time to run in minutes.')
 args = parser.parse_args()
 
 path = args.path
