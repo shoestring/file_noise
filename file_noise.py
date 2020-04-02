@@ -5,7 +5,7 @@
 # pythons (2.x). Probably could be done more elegant. I promise nothing.
 #
 # Author:  Mike Cammilleri  
-# Date:    Tue Mar 31 13:25:38 CDT 202
+# Date:    Tue Mar 31 13:25:38 CDT 2020
 
 import subprocess
 import os
